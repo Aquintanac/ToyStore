@@ -1,18 +1,29 @@
-﻿using System;
+﻿using Autofac;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using ToyStoreData.Repository;
+using ToyStoreWebApi.Container;
 
 namespace ToyStoreWebApi.Controllers
 {
     public class ValuesController : ApiController
     {
-        // GET api/values
-        public IEnumerable<string> Get()
+        IContainer _container;
+        IUnitOfWork _unitOfWork;
+        public ValuesController()
         {
-            return new string[] { "value1", "value2" };
+            _container = ContainerConfig.Configure();
+            _unitOfWork = _container.Resolve<IUnitOfWork>();
+        }
+
+        // GET api/values
+        public IHttpActionResult Get()
+        {
+            return Ok(_unitOfWork.ProductRepository.Get());
         }
 
         // GET api/values/5

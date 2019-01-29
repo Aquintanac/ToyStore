@@ -4,6 +4,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ToyStoreData.Models;
 
 namespace ToyStoreData
 {
@@ -11,7 +12,12 @@ namespace ToyStoreData
     {
         public  ToyStoreContext(): base()
         {
-
+            Database.SetInitializer<ToyStoreContext>(new DBInitializer());
+            //Database.SetInitializer<ToyStoreContext>(new CreateDatabaseIfNotExists<ToyStoreContext>());
+            //Database.SetInitializer<ToyStoreContext>(new DropCreateDatabaseIfModelChanges<ToyStoreContext>());
+            //Database.SetInitializer<ToyStoreContext>(new DropCreateDatabaseAlways<ToyStoreContext>());
         }
+
+        public DbSet<Product> Products { get; set; }
     }
 }
