@@ -16,14 +16,11 @@ namespace ToyStoreData.Models
         public string Name { get; set; }
         [MaxLength(100)]
         public string Description { get; set; }
-        [MaxLength(100)]
         public int AgeRestriction { get; set; }
         [Required]
         [MaxLength(50)]
         public string Company { get; set; }
         [Required]
-        [MinLength(1)]
-        [MaxLength(1000)]
         public decimal Price { get; set; }
 
     }

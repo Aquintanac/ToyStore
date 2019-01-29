@@ -8,7 +8,7 @@ using ToyStoreData.Models;
 
 namespace ToyStoreData
 {
-    public class DBInitializer: DropCreateDatabaseAlways<ToyStoreContext>
+    public class DBInitializer: CreateDatabaseIfNotExists<ToyStoreContext>
     {
         protected override void Seed(ToyStoreContext context)
         {
