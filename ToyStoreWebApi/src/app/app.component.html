@@ -1,0 +1,58 @@
+
+<div class="row">    
+    <div class="col-md-12" *ngIf="products">
+        <h3>Products</h3>
+        <button type="button" (click)="showCreateDialog()" class="btn btn-outline-primary">Create</button>
+        <p-table [value]="products">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Company</th>
+                    <th>Price</th>
+                    <th></th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-product>
+                <tr>
+                    <td>{{product.Id}}</td>
+                    <td>{{product.Name}}</td>
+                    <td>{{product.AgeRestriction}}</td>
+                    <td>{{product.Company}}</td>
+                    <td>{{product.Price | currency}}</td>
+                    <td>
+                        <button class="btn btn-outline-primary active" (click)="showEditDialog(product)">Update</button>
+                        <button class="btn btn-outline-primary active" (click)="deleteProduct(product.Id)">Delete</button>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+
+        <p-dialog header="{{dialogHeader}}" [(visible)]="displayEdit" [modal]="true" [responsive]="true" [style]="{width: '500px', minWidth: '400px'}" [minY]="70"
+                  [maximizable]="true" [baseZIndex]="10000">
+
+            <form [formGroup]="productForm">
+                <input formControlName="Name" maxlength="50" class="form-control" placeholder="Name" />
+                <input formControlName="AgeRestriction" type="number" min="0" max="100" class="form-control" placeholder="Age" />
+                <input formControlName="Company" class="form-control" maxlength="50" placeholder="Company" />
+                <input formControlName="Price" type="number" class="form-control" min="1" max="1000" placeholder="Price" />
+                <input formControlName="Description" class="form-control" maxlength="100" placeholder="Description" />
+            </form>
+
+            <p-footer>
+                <button type="button" pButton icon="pi pi-check" (click)="createProduct()" *ngIf="!isEdit" label="Save" [disabled]="!productForm.valid"></button>
+                <button type="button" pButton icon="pi pi-check" (click)="updateProduct()" *ngIf="isEdit" label="Update" [disabled]="!productForm.valid"></button>
+                <button type="button" pButton icon="pi pi-close" (click)="cancel()" label="Cancel" class="ui-button-secondary"></button>
+            </p-footer>
+        </p-dialog>
+
+        <p-confirmDialog header="Delete" icon="pi pi-exclamation-triangle"></p-confirmDialog>
+
+        <p-toast position="top-right"></p-toast>
+    </div>
+    <div class="col-md-6" *ngIf="!products">
+        <h3>No data found</h3>
+    </div>
+</div>
+<router-outlet></router-outlet>

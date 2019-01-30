@@ -8,16 +8,17 @@ import { ProductsService } from './Services/products-service';
 })
 export class AppComponent {
     title = 'toyStore';
-    products: any;
+    products: any[];
 
     constructor(private producsService: ProductsService) { }
 
     public getAllProducts() {
-        this.products = null;
-
         this.producsService.getAll().subscribe((data) => {
             if (data) {
                 this.products = data;
+            }
+            else {
+                this.products = null;
             }
         });
     }
