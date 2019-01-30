@@ -14,9 +14,9 @@ namespace ToyStoreData
         {
             IList<Product> defaultStandards = new List<Product>();
 
-            defaultStandards.Add(new Product() { Name = "Nerf Rival", AgeRestriction = 12, Company = "Mattel", Description = "Nerf gun", Price = 12.50m});
-            defaultStandards.Add(new Product() { Name = "Toy 2", AgeRestriction = 12, Company = "Hasbro",  Price = 12.50m });
-            defaultStandards.Add(new Product() { Name = "Toy 3", Company = "Marvel", Description = "Toy 3 description", Price = 12.50m });
+            defaultStandards.Add(new Product() { Name = "Xbox One", AgeRestriction = 12, Company = "Microsoft", Description = "Game console", Price = 350.50m});
+            defaultStandards.Add(new Product() { Name = "PS4", AgeRestriction = 12, Company = "Sony",  Price = 400.50m });
+            defaultStandards.Add(new Product() { Name = "Switch", Company = "Nintendo", Description = "Hybrid game console", Price = 300.00m });
 
 
             context.Products.AddRange(defaultStandards);
