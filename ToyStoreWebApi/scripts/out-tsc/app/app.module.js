@@ -9,6 +9,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TableModule } from 'primeng/table';
 import { DialogModule } from 'primeng/dialog';
 import { ButtonModule } from 'primeng/button';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ConfirmationService } from 'primeng/api';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -25,9 +29,14 @@ var AppModule = /** @class */ (function () {
                 BrowserAnimationsModule,
                 TableModule,
                 DialogModule,
-                ButtonModule
+                ButtonModule,
+                ConfirmDialogModule,
+                ToastModule
             ],
-            providers: [],
+            providers: [
+                ConfirmationService,
+                MessageService
+            ],
             bootstrap: [AppComponent]
         })
     ], AppModule);

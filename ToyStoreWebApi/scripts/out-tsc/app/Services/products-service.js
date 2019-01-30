@@ -12,6 +12,12 @@ var ProductsService = /** @class */ (function () {
     ProductsService.prototype.create = function (product) {
         return this.http.post(this.apiUrl + 'add', product);
     };
+    ProductsService.prototype.update = function (product) {
+        return this.http.post(this.apiUrl + 'update', product);
+    };
+    ProductsService.prototype.delete = function (id) {
+        return this.http.get(this.apiUrl + 'delete/' + id);
+    };
     ProductsService = tslib_1.__decorate([
         Injectable({
             providedIn: 'root',
