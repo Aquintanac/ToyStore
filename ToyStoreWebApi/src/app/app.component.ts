@@ -46,7 +46,6 @@ export class AppComponent implements OnInit {
             ]),
         Description: new FormControl('',
             [
-                Validators.required,
                 Validators.maxLength(100)
             ]),
 
